@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './Banner.css'
-import background5 from './background5.jpg'
+// import background5 from './background5.jpg'
 import axios from '../axios';
 import requests from '../Requests';
 
