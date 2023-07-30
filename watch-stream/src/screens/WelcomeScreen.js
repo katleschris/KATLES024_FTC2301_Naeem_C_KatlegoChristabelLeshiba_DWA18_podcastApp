@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
 import LoginScreen from './LoginScreen';
+import SignupScreen from './SignupScreen';
 import './WelcomeScreen.css';
-import { Router } from 'react-router-dom';
+import { Router, Route, Routes } from 'react-router-dom';
 
 function WelcomeScreen() {
   const [signIn, setSignIn] = useState(false)
