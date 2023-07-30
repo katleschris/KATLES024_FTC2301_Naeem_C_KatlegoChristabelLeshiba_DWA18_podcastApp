@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { supabase } from './Client';
 import { Route, Routes, Link } from 'react-router-dom';
+import LoginScreen from './LoginScreen';
 
 function SignupScreen() {
+  const [showLoginScreen, setShowLoginScreen] = useState(false); // State to control component rendering
 
     const [formData, setFormData] = useState({
         fullname:'',
@@ -34,11 +36,15 @@ function SignupScreen() {
 
             if (error) throw error;
             alert('Check your email for verification link');
-            history.push('./LoginScreen')
+            setShowLoginScreen(true); // Show the LoginScreen component after successful signup
+            
                 
         } catch (error) {
             alert(error.message);
         }
+    }
+    if (showLoginScreen) {
+      return <LoginScreen />;
     }
 
     return (
@@ -70,7 +76,7 @@ function SignupScreen() {
 
                 <button className='register' type='submit'>Register</button>    
             </form>
-            Already have an account? <Link to='./LoginScreen'>Login</Link>
+            Already have an account? <Link to='#' onClick={() => setShowLoginScreen(true)}>Login</Link>
         </div>
     );
 }
