@@ -20,7 +20,7 @@ function WelcomeScreen() {
         <div className='WelcomeScreen_body'>
           
           {signIn? (
-              <LoginScreen />
+              <SignupScreen />
             ) :(
             <>
             <h1>Full content library in HD quality, with multiple subtitles.</h1>

@@ -5,6 +5,14 @@ import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import SignupScreen from './screens/SignupScreen';
+import LoginScreen from './screens/LoginScreen';
+import HomeScreen from './screens/HomeScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
+
+export{
+  SignupScreen, LoginScreen, HomeScreen, WelcomeScreen
+}
 
 const container = document.getElementById('root');
 const root = createRoot(container);
