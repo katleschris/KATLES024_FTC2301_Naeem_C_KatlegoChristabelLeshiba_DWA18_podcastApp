@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginScreen from './screens/LoginScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 function App() {
   const user = null 
@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <Router>
         {!user ? (
-          <LoginScreen />
+          <WelcomeScreen />
         ) : (
           <Routes>
           <Route path="/" element={<HomeScreen />} />

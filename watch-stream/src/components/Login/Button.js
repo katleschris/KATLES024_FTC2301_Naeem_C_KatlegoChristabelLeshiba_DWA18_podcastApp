@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default function Button({ content }) {
-  return <StyledButton>{content}</StyledButton>;
+  return <StyledButton type="submit">{content}</StyledButton>;
 }
 
 const StyledButton = styled.button`

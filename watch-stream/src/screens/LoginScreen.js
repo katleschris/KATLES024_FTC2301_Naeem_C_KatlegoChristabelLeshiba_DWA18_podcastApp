@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Button from '../components/Login/Button';
 import Input from '../components/Login/Input';
 import Icon from '../components/Login/Icon';
-import NavBar from '../components/Login/NavBar';
+// import NavBar from '../components/Login/NavBar';
 import './LoginScreen.css'
 
 function LoginScreen() {
@@ -18,8 +18,7 @@ function LoginScreen() {
   const TwitterBackground =
     "linear-gradient(to right, #56C1E1 0%, #35A9CE 50%)";
   return (
-    <>
-    <NavBar />
+    <div className='LoginScreen'>
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
@@ -32,7 +31,7 @@ function LoginScreen() {
         <Button content="Sign Up" />
       </ButtonContainer>
       <LoginWith>OR LOGIN WITH</LoginWith>
-      <HorizontalRule />
+      {/* <HorizontalRule /> */}
       <IconsContainer>
       <Icon color={GoogleBackground}>
           <FaGoogle />
@@ -49,7 +48,7 @@ function LoginScreen() {
       </IconsContainer>
       <ForgotPassword>Forgot Password ?</ForgotPassword>
     </MainContainer>
-    </>
+    </div>
   );
 }
 
