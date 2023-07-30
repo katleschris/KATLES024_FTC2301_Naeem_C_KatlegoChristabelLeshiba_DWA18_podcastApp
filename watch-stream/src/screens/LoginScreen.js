@@ -2,13 +2,21 @@ import React from 'react'
 // import {Button, Divider, Form, Input, Typography} from 'antd'
 import {FaFacebookF, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
 import styled from "styled-components";
-import Button from '../components/Login/Button';
+// import Button from '../components/Login/Button';
 import Input from '../components/Login/Input';
 import Icon from '../components/Login/Icon';
 // import NavBar from '../components/Login/NavBar';
 import './LoginScreen.css'
 
 function LoginScreen() {
+
+  const signIn = (e) => {
+    e.preventDefault();
+  }
+
+  const register = (e) => {
+    e.preventDefault();
+  }
 
   const GoogleBackground = "linear-gradient(to right, #FF0000 0%, #FF8000 20%, #FFFF00 40%, #00FF00 60%, #0000FF 80%, #800080 100%)";
   const FacebookBackground =
@@ -28,10 +36,11 @@ function LoginScreen() {
       </InputContainer>
       <br/>
       <ButtonContainer>
-        <Button content="Sign Up" />
+        <button className='sign_in' type='submit' onClick={signIn}>Sign in</button>
+        <button className='register' type='submit' onClick={register}>Register</button>
       </ButtonContainer>
       <LoginWith>OR LOGIN WITH</LoginWith>
-      {/* <HorizontalRule /> */}
+      <HorizontalRule />
       <IconsContainer>
       <Icon color={GoogleBackground}>
           <FaGoogle />
@@ -128,6 +137,12 @@ const ButtonContainer = styled.div`
 
 const LoginWith = styled.h5`
   cursor: pointer;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease-in-out;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const HorizontalRule = styled.hr`

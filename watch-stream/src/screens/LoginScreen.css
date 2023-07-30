@@ -1,6 +1,42 @@
-.LoginScreen{
-  margin-left: auto;
-  margin-right: auto;
-  width: fit-content;
-  height: fit-content;
+.LoginScreen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* background: rgba(0, 0, 0, 0.8); */
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.sign_in{
+  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  width: 30%;
+  height: 3rem;
+  border: none;
+  color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.sign_in:hover{
+  text-decoration: underline;
+}
+
+.register {
+  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  width: 30%;
+  height: 3rem;
+  border: none;
+  color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.register:hover{
+  text-decoration: underline;
 }
