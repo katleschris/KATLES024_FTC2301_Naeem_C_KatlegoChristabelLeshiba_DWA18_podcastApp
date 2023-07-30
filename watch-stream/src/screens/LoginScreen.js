@@ -6,7 +6,7 @@ import styled from "styled-components";
 import './LoginScreen.css';
 import SignupScreen from './SignupScreen';
 
-function LoginScreen() {
+function LoginScreen({ setUser }) {
   let navigate = useNavigate();
 
   const [showSignup, setShowSignup] = useState(false);
@@ -28,18 +28,19 @@ function LoginScreen() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { user, error } = await supabase.auth.signIn({
         email: formData.email,
         password: formData.password,
       });
 
       if (error) throw error;
-      console.log(data);
-      // setToken(data)
+
+      setUser(user);
+      // Step 3: Redirect the user to the HomeScreen
       navigate('./HomeScreen');
 
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   }
 
@@ -88,3 +89,4 @@ const HorizontalRule = styled.hr`
 `;
 
 export default LoginScreen;
+
