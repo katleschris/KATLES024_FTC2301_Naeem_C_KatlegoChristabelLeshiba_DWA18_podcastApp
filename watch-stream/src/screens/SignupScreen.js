@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { supabase } from './Client'
+import { Route, Routes, Link } from 'react-router-dom'
 
 function SignupScreen() {
 
-    const [formData, setFormData] = useState({
+    const [FormData, setFormData] = useState({
         fullname:'',
         email: '',
         password: '',
@@ -21,11 +22,11 @@ function SignupScreen() {
         try {
             const { data, error } = await supabase.auth.signUp(
                 {
-                  email: formData.email,
-                  password: formData.password,
+                  email: FormData.email,
+                  password: FormData.password,
                   options: {
                     data: {
-                      full_name: formData.fullname,
+                      full_name: FormData.fullname,
                     }
                   }
                 }
@@ -41,7 +42,7 @@ function SignupScreen() {
     <div className='SignupScreen'>
         <form onClick={handleSubmit}>
             <input placeholder='fullname'
-            name='fullname'
+            name='fullname' type='text'
             onChange={handleChange} />
 
             <input placeholder='email'
@@ -54,6 +55,7 @@ function SignupScreen() {
 
             <button type='submit'>Register</button>    
         </form>
+        Already have an accout? <Link to = '/'>Login</Link>
     </div>
   )
 }
