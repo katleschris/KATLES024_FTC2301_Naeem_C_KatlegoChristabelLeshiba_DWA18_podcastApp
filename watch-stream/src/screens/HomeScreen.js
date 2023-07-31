@@ -12,6 +12,7 @@ function HomeScreen(props) {
   useEffect( () => {
     aggregateGenres()
     }, [])
+    console.log(groupedShows)
 
     const genreTitles = {
       1: 'Crime',
@@ -20,6 +21,7 @@ function HomeScreen(props) {
       4: 'Entertainment',
       5: 'Biography',
       9: 'Kids & Family',
+      // 8: ''
     };
 
     
@@ -41,7 +43,6 @@ function HomeScreen(props) {
         const genreTitle = genreTitles[genreID];
         aggregatedGenres[genreTitle] = groupedShows[genreID];
       });
-      console.log(aggregatedGenres)
       setGroupedShows(aggregatedGenres);
 
     }

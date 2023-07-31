@@ -15,7 +15,6 @@ function App() {
   }, [])
 
 
-
   async function fetchShows(){
     const showsEndpoint = 'https://podcast-api.netlify.app/shows';
   

@@ -10,6 +10,10 @@ function Row(props) {
       setShows(props.shows)
     }, [shows])
 
+    function handleClick(){
+        
+    }
+
     
     const base_url = 'https://podcast-api.netlify.app/shows';
 
@@ -20,11 +24,11 @@ function Row(props) {
           {shows  
           ? shows.map(
             (show => (
-            <div>
+            <div className='show' onClick={handleClick}>
               <img className='row_poster'src= {show.image}/>
               <h6>{show.title}</h6>
               <h6>{show.seasons}</h6>
-              <h6>{show.updated}</h6>
+              <h6>{new Date(show.updated).toLocaleString('en-US')}</h6>
             </div>
             )
               
