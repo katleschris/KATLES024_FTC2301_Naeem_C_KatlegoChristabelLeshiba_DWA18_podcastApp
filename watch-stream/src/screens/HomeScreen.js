@@ -41,7 +41,7 @@ function HomeScreen(props) {
         const genreTitle = genreTitles[genreID];
         aggregatedGenres[genreTitle] = groupedShows[genreID];
       });
-    
+      console.log(aggregatedGenres)
       setGroupedShows(aggregatedGenres);
 
     }
@@ -51,18 +51,12 @@ function HomeScreen(props) {
         <Nav />
         <br></br>
         <Banner />
-        <Row 
-          title = 'NETFLIX ORIGINALS'
-          fetchUrl = {requests.fetchNetflixOriginals}
-          isLargeRow
-        />
-        <Row title ='Crime' fetchUrl = {requests.fetchTrending}/>
-        <Row title ='True Crime' fetchUrl = {requests.fetchTopRated}/>
-        <Row title ='History' fetchUrl = {requests.fetchActionMovies}/>
-        <Row title ='Entertainment' fetchUrl = {requests.fetchComedyMovies}/>
-        <Row title ='Biography' fetchUrl = {requests.fetchHorrorMovies}/>
-        <Row title ='Kids and Family' fetchUrl = {requests.fetchRomanceMovies}/> 
-         <Row title ='Documentaries' fetchUrl = {requests.fetchDocumentaries}/>
+        <Row title ='True Crime' shows = {groupedShows['True Crime']}/>
+        <Row title ='History' shows = {groupedShows['History']}/>
+        <Row title ='Biography' shows = {groupedShows['Biography']}/>
+        <Row title ='Crime' shows = {groupedShows['Crime']}/>
+        <Row title ='Entertainment' shows = {groupedShows['Entertainment']}/>
+        <Row title ='Kids and Family' shows = {groupedShows['Kids and Family']}/> 
     </div>
   )
 }

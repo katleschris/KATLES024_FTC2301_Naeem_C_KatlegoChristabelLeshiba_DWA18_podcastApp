@@ -2,36 +2,34 @@ import React, { useEffect, useState } from 'react'
 import './Row.css'
 import axios from '../axios'
 
-function Row({title, fetchUrl, isLargeRow = false}) {
-    const [movies, setMovies] = useState([])
+function Row(props) {
+    const [shows, setShows] = useState([])
+    console.log('props', props)
+    const title = props.title
+    useEffect( () => {
+      setShows(props.shows)
+    }, [shows])
+
     
-    const base_url = 'https://image.tmdb.org/t/p/original/';
-
-    useEffect(() =>{
-        async function fetchData(){
-            const request = await axios.get(fetchUrl);
-            setMovies(request.data.results);
-            return request;
-        }
-        fetchData();
-
-    }, [fetchUrl])
+    const base_url = 'https://podcast-api.netlify.app/shows';
 
   return (
     <div className='row'>
         <h2>{title}</h2>
         <div className='row_posters'>
-          {movies.map(
-            (movie => (
-                <img className={`row_poster ${ isLargeRow && 'row_posterLarge'}`}
-                key={movie.id}
-                src={`${base_url}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-                }`} alt={movie.name} 
-              />
+          {shows  
+          ? shows.map(
+            (show => (
+            <div>
+              <img className='row_poster'src= {show.image}/>
+              <h6>{show.title}</h6>
+              <h6>{show.seasons}</h6>
+              <h6>{show.updated}</h6>
+            </div>
             )
               
-          ))}
+          ))
+        : null}
         </div>
 
     </div>
