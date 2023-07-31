@@ -7,19 +7,22 @@ import LoginScreen from './screens/LoginScreen';
 
 function App() {
   const [user, setUser] = useState( null);
+  const [shows, setShows] = useState([])
+  const [groupedShows, setGroupedShows] = useState({})
 
-  // useEffect( async () => {
-  //   const showsEndpoint = 'https://podcast-api.netlify.app/shows';
+  useEffect(() => {
+    fetchShows()
+  }, [])
 
-  //   const response = await fetch(showsEndpoint)
-  //   console.log(response.json())
-    
-    
-  // }, [user])
 
-  // function updateUser(){
-  //   setUser(null)
-  // }
+
+  async function fetchShows(){
+    const showsEndpoint = 'https://podcast-api.netlify.app/shows';
+  
+    const response = await fetch(showsEndpoint)
+    const tempShows = await response.json()
+    setShows(tempShows)
+  }
 
   return (
     <div className="app">
@@ -29,7 +32,7 @@ function App() {
           <WelcomeScreen setUser={setUser} />
          ) : ( 
              <Routes>
-                <Route path="/" element={<HomeScreen />} />
+                <Route path="/" element={<HomeScreen shows = {shows}/>} />
             </Routes>
         )}
       </Router>
