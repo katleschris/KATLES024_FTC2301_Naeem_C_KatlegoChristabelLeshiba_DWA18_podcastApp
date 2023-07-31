@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 import LoginScreen from './LoginScreen';
+import { supabase } from './Client';
 import SignupScreen from './SignupScreen';
 import './WelcomeScreen.css';
 import { Router, Route, Routes } from 'react-router-dom';
 
-function WelcomeScreen() {
+function WelcomeScreen(props) {
   const [signIn, setSignIn] = useState(false)
   return (
     <div className='WelcomeScreen'>
@@ -20,7 +21,7 @@ function WelcomeScreen() {
         <div className='WelcomeScreen_body'>
           
           {signIn? (
-              <SignupScreen />
+              <LoginScreen setUser={props.setUser}/>
             ) :(
             <>
             <h1>Full content library in HD quality, with multiple subtitles.</h1>

@@ -1,5 +1,6 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import './HomeScreen.css'
+import { supabase } from './Client'
 import Nav from '../components/Nav'
 import Banner from '../components/Banner'
 import requests from "../Requests"
@@ -7,6 +8,9 @@ import Row from '../components/Row'
 import { useNavigate } from 'react-router-dom'
 
 function HomeScreen() {
+  // useEffect( async () => {
+  //     console.log('rqz',requests.shows)
+  //   }, [])
   return (
     <div className='homescreen'>
         <Nav />

@@ -6,10 +6,12 @@ import styled from "styled-components";
 import './LoginScreen.css';
 import SignupScreen from './SignupScreen';
 
-function LoginScreen({ setUser }) {
-  let navigate = useNavigate();
+function LoginScreen(props) {
+  const navigate = useNavigate();
 
   const [showSignup, setShowSignup] = useState(false);
+
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const [formData, setFormData] = useState({
     email: '',
@@ -27,20 +29,26 @@ function LoginScreen({ setUser }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
     try {
-      const { user, error } = await supabase.auth.signIn({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
 
+      props.setUser(data)
+
+
+
       if (error) throw error;
 
-      setUser(user);
       // Step 3: Redirect the user to the HomeScreen
-      navigate('./HomeScreen');
+      // navigate('./HomeScreen');
+
 
     } catch (error) {
       alert(error.message);
+      console.log('err', error)
     }
   }
 

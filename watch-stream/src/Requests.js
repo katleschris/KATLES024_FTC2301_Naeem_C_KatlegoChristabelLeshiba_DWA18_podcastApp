@@ -1,6 +1,23 @@
 
 // Typically we would store in (process.env.API_KEY)
 const API_KEY = 'f81980ff410e46f422d64ddf3a56dddd'
+let shows = null
+let trending = null
+
+async function fetchShows(){
+  console.log('requests')
+  const showsEndpoint = 'https://podcast-api.netlify.app/shows';
+
+  const response = await fetch(showsEndpoint)
+  shows = await response.json()
+  console.log(shows)
+
+  
+}
+
+fetchShows()
+
+  
 
 const requests = {
   fetchTrending: `/trending/all/week?api_key=${API_KEY}&language=en-US`,
