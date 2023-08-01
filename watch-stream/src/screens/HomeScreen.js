@@ -14,13 +14,15 @@ function HomeScreen(props) {
     }, [])
 
     const genreTitles = {
-      1: 'Crime',
-      2: 'True Crime',
+      1: 'Personal Growth',
+      2: 'Investigative Journalism',
       3: 'History',
-      4: 'Entertainment',
-      5: 'Biography',
+      4: 'Comedy',
+      5: 'Entertainment',
+      6: 'Business',
+      7: 'Fiction',
+      8: 'News',
       9: 'Kids & Family',
-      // 8: ''
     };
 
     
@@ -51,12 +53,16 @@ function HomeScreen(props) {
         <Nav />
         <br></br>
         <Banner />
-        <Row title ='True Crime' shows = {groupedShows['True Crime']}/>
-        <Row title ='History' shows = {groupedShows['History']}/>
-        <Row title ='Biography' shows = {groupedShows['Biography']}/>
-        <Row title ='Crime' shows = {groupedShows['Crime']}/>
         <Row title ='Entertainment' shows = {groupedShows['Entertainment']}/>
-        <Row title ='Kids and Family' shows = {groupedShows['Kids and Family']}/> 
+        <Row title ='Fiction' shows = {groupedShows['Fiction']}/> 
+        <Row title ='Kids & Family' shows = {groupedShows['Kids & Family']}/> 
+        <Row title ='Investigative Journalism' shows = {groupedShows['Investigative Journalism']}/>
+        <Row title ='History' shows = {groupedShows['History']}/>
+        <Row title ='Personal Growth' shows = {groupedShows['Personal Growth']}/>
+        <Row title ='Business' shows = {groupedShows['Business']}/> 
+        <Row title ='News' shows = {groupedShows['News']}/> 
+        <Row title ='Comedy' shows = {groupedShows['Comedy']}/>
+
     </div>
   )
 }
