@@ -4,96 +4,59 @@ import './ShowContent.css';
 
 function ShowContent() {
   const { id } = useParams(); // Access the show's ID from the URL parameter
-
-  useEffect(async () => {
-    const baseUrl = "https://podcast-api.netlify.app/shows/9177";
-
-      const response = await fetch(baseUrl)
-      // const showData = await response.json()
-      console.log('showData', response)
-  },[])
-
-  // Sample data for the show with ID 'id'
-  const sampleData = {
-    id: 'show123',
-    title: 'Example Show',
-    seasons: [
-      {
-        number: 1,
-        episodes: [
-          { id: 'ep101', title: 'Episode 1 of Season 1' },
-          { id: 'ep102', title: 'Episode 2 of Season 1' },
-          // Add more episodes for season 1 if needed
-        ],
-      },
-      {
-        number: 2,
-        episodes: [
-          { id: 'ep201', title: 'Episode 1 of Season 2' },
-          { id: 'ep202', title: 'Episode 2 of Season 2' },
-          // Add more episodes for season 2 if needed
-        ],
-      },
-      // Add more seasons if needed
-    ],
-  };
-
-  // State to keep track of the selected season
-  const [selectedSeason, setSelectedSeason] = useState(sampleData.seasons[0]);
+    const baseUrl = "https://podcast-api.netlify.app/id/";
+    const [showData, setshowData] = useState({})
+    const [selectedSeason, setSelectedSeason] = useState({});
 
   useEffect(() => {
-    // You can fetch the show's data from an API here using the 'id' parameter
-    // For now, we'll use the sampleData to simulate the fetched data
+      fetchShow()
+  },[])
 
-    // Find the selected season based on the URL parameter 'seasonNumber'
-    const seasonNumber = parseInt(window.location.search.replace('?season=', ''));
-    const selectedSeasonData = sampleData.seasons.find(
-      (season) => season.number === seasonNumber
-    );
+  async function fetchShow(){
+    const response = await fetch(baseUrl + id)
+    const tempShowData = await response.json()
+    setshowData(tempShowData)
+    setSelectedSeason(tempShowData.seasons[0])
+    
+  }
 
-    // Set the selected season in the state
-    if (selectedSeasonData) {
-      setSelectedSeason(selectedSeasonData);
-    }
-  }, [id]);
+  console.log('showData,selectedSeasons',showData, selectedSeason)
 
   return (
     <div className='showContent'>
       {/* Display the content for the specific show with the given 'id' */}
-      <h1>{sampleData.title}</h1>
-      <div className='video'>Video</div>
+      <h1>{showData?.title}</h1>
+      <div className='video' style={{backgroundImage: `url('${showData.image}')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
 
       {/* Toggle between seasons using a drop-down menu */}
       <div className='seasons'>
         <select
-          value={selectedSeason.number}
+          value={selectedSeason}
           onChange={(e) => {
-            const selectedSeasonNumber = parseInt(e.target.value);
-            const selectedSeasonData = sampleData.seasons.find(
-              (season) => season.number === selectedSeasonNumber
-            );
-            setSelectedSeason(selectedSeasonData);
-            // Update the URL parameter to reflect the selected season
-            window.history.pushState({}, '', `?season=${selectedSeasonNumber}`);
+            e.preventDefault()
+            setSelectedSeason(e.target.value)
+            console.log(e.target.value)
           }}
         >
-          {sampleData.seasons.map((season) => (
-            <option key={season.number} value={season.number}>
-              Season {season.number}
-            </option>
-          ))}
+          { showData !== {}
+            ? (showData?.seasons?.map((season) => (
+                <option key={season.season} value={season.title}>
+                Season {season.season}
+                </option>
+                )))
+            : null}
         </select>
       </div>
 
       {/* List of episodes for the selected season */}
-      <div className='episodes'>
+      {/* <div className='episodes'>
         <h2>Season {selectedSeason.number} Episodes:</h2>
         <ul>
           {selectedSeason.episodes.map((episode) => (
             <li key={episode.id}>{episode.title}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }
