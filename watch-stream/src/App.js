@@ -33,7 +33,7 @@ function App() {
          ) : ( 
              <Routes>
                 <Route path="/" element={<HomeScreen shows = {shows}/>} />
-                <Route path="/show/:id" element={<ShowContent />} />
+                <Route path="/id/:id" element={<ShowContent />} />
             </Routes>
         )}
       </Router>

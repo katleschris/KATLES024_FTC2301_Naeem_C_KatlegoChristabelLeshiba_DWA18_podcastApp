@@ -12,7 +12,6 @@ function HomeScreen(props) {
   useEffect( () => {
     aggregateGenres()
     }, [])
-    console.log(groupedShows)
 
     const genreTitles = {
       1: 'Crime',

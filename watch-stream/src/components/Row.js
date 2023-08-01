@@ -7,7 +7,6 @@ import ShowContent from './ShowContent';
 function Row(props) {
   const [shows, setShows] = useState([]);
   const [selectedShow, setSelectedShow] = useState(null);
-  console.log('props', props);
   const title = props.title;
   const navigate = useNavigate();
 
@@ -17,8 +16,7 @@ function Row(props) {
 
   function handleClick(show) {
     setSelectedShow(show);
-    console.log('show',shows)
-    navigate(`/show/${show.id}`);
+    navigate(`/id/${show.id}`);
   }
 
   const base_url = 'https://podcast-api.netlify.app/shows';
