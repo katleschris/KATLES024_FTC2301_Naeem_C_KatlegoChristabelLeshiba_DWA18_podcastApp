@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import ShowContent from './components/ShowContent';
 
 function App() {
   const [user, setUser] = useState( null);
@@ -32,6 +33,7 @@ function App() {
          ) : ( 
              <Routes>
                 <Route path="/" element={<HomeScreen shows = {shows}/>} />
+                <Route path="/show/:id" element={<ShowContent />} />
             </Routes>
         )}
       </Router>
