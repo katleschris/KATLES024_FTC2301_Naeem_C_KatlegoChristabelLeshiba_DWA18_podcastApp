@@ -11,8 +11,6 @@ function LoginScreen(props) {
 
   const [showSignup, setShowSignup] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(false)
-
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -36,11 +34,10 @@ function LoginScreen(props) {
         password: formData.password,
       });
 
+      if (error) throw error;
       props.setUser(data)
 
 
-
-      if (error) throw error;
 
       // Step 3: Redirect the user to the HomeScreen
       // navigate('./HomeScreen');

@@ -23,12 +23,11 @@ function App() {
     const tempShows = await response.json()
     setShows(tempShows)
   }
-
   return (
     <div className="app">
       {/* <HomeScreen/> */}
       <Router>
-        {!user ? (
+        {!user ?  (
           <WelcomeScreen setUser={setUser} />
          ) : ( 
              <Routes>
