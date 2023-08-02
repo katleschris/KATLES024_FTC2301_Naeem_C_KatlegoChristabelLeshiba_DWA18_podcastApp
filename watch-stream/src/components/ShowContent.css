@@ -46,7 +46,7 @@ p {
   padding: 0;
 }
 
-.episodes li {
+.episodes button {
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 4px;

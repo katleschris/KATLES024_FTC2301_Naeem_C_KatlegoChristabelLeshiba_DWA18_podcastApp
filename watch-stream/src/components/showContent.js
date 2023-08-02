@@ -7,6 +7,7 @@ function ShowContent() {
     const baseUrl = "https://podcast-api.netlify.app/id/";
     const [showData, setshowData] = useState({})
     const [selectedSeason, setSelectedSeason] = useState({});
+    const [currentEpisodeURL, setCurrentEpisodeURL] = useState('');
 
   useEffect(() => {
       fetchShow()
@@ -19,29 +20,66 @@ function ShowContent() {
     setSelectedSeason(tempShowData.seasons[0])
     
   }
+  function truncate(string, n){
+    return string?.length > n? string.substr(0, n-1) + '...' : string
+  }
+  const seasonImageURL = selectedSeason?.image ?? showData?.image
 
-  console.log('showData,selectedSeasons',showData, selectedSeason)
+  async function playEpisode(episodeURL){
+
+    try {
+        const response = await fetch(episodeURL);
+        const blob = await response.blob();
+        const audioBlobUrl = URL.createObjectURL(blob);
+        setCurrentEpisodeURL(audioBlobUrl)
+        } catch (error) {
+            console.error('Error fetching MP3:', error);
+        }
+
+    
+  }
 
   return (
     <div className='showContent'>
-      {/* Display the content for the specific show with the given 'id' */}
-      <h1>{showData?.title}</h1>
-      <div className='video' style={{backgroundImage: `url('${showData.image}')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}></div>
+
+      <div className='video' 
+        style={{backgroundImage: `url('${seasonImageURL}')`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+          { currentEpisodeURL
+            ?
+            <audio controls>
+                <source src={currentEpisodeURL} type="audio/mpeg" />
+                Your browser does not support the audio element.
+            </audio>
+            :
+            null
+        }
+      </div>
+
+      <div className='show_description' style={{ display: 'flex', alignItems: 'center' }}>
+        <img src={showData.image} style={{ width: '150px', height: '150px' }} />
+        <div style={{ marginLeft: '20px' }}>
+          <p style={{width: '80%'}}>{truncate(showData?.description, 300)}</p>
+          <p>Last Updated: {new Date(showData?.updated).toLocaleDateString('en-us')}</p> 
+          <p>Genres: {showData?.genres + ' '}</p>
+        </div>
+      </div>
 
       {/* Toggle between seasons using a drop-down menu */}
       <div className='seasons'>
         <select
-          value={selectedSeason}
+          value={selectedSeason?.title}
           onChange={(e) => {
             e.preventDefault()
-            setSelectedSeason(e.target.value)
-            console.log(e.target.value)
+            const seasonNumber = parseInt(e.target.value.split(' ')[1]) - 1
+            setSelectedSeason(showData.seasons[seasonNumber])
+            // setSelectedSeason(e.target.value)
+
           }}
         >
           { showData !== {}
             ? (showData?.seasons?.map((season) => (
                 <option key={season.season} value={season.title}>
-                Season {season.season}
+               Season {season.season}{}
                 </option>
                 )))
             : null}
@@ -49,14 +87,21 @@ function ShowContent() {
       </div>
 
       {/* List of episodes for the selected season */}
-      {/* <div className='episodes'>
-        <h2>Season {selectedSeason.number} Episodes:</h2>
-        <ul>
-          {selectedSeason.episodes.map((episode) => (
-            <li key={episode.id}>{episode.title}</li>
-          ))}
-        </ul>
-      </div> */}
+      <div className='episodes'>
+        {selectedSeason ? (
+          <>
+            <h2> {selectedSeason.title} Episodes:</h2>
+            <ul>
+              {selectedSeason?.episodes?.map((episode) => (
+                <button key={episode.id} onClick={() => playEpisode(episode.file)}>{episode.title} </button>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p>No episodes available for the selected season</p>
+        )}
+      </div>
+
     </div>
   );
 }
