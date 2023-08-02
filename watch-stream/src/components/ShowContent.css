@@ -16,8 +16,40 @@
   .episodes {
     margin: 20px 0;
   }
+
 .video{
     /* background-color: black; */
-    height: 70vh;
-    width: 50%;
+    height: 200vh;
+    width: 100vw;
+}
+
+.show_description {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+p {
+  padding: 5px;
+}
+
+.episodes{
+  flex-direction: row;
+
+}
+
+.episodes ul {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.episodes li {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
