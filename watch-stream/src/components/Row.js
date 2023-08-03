@@ -30,8 +30,8 @@ function Row(props) {
               <div className='show' key={show.id} onClick={() => handleClick(show)}>
                 <img className='row_poster' src={show.image} alt={show.title} />
                 <h6>{show.title}</h6>
-                <h6>{show.seasons}</h6>
-                <h6>{new Date(show.updated).toLocaleDateString('en-US')}</h6>
+                <h6>{show.seasons} Seasons</h6>
+                <h6>Last updated: {new Date(show.updated).toLocaleDateString('en-US')}</h6>
               </div>
             ))
           : null}

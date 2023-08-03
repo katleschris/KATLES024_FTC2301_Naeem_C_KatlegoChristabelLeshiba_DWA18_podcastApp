@@ -16,6 +16,7 @@ function App() {
   }, [])
 
 
+
   async function fetchShows(){
     const showsEndpoint = 'https://podcast-api.netlify.app/shows';
   
@@ -32,7 +33,7 @@ function App() {
          ) : ( 
              <Routes>
                 <Route path="/" element={<HomeScreen shows = {shows}/>} />
-                <Route path="/id/:id" element={<ShowContent />} />
+                <Route path="/id/:id" element={<ShowContent user={user} onClose={()=> alert('Audio is playing... are you sure you want to close the page?')}/>} />
             </Routes>
         )}
       </Router>

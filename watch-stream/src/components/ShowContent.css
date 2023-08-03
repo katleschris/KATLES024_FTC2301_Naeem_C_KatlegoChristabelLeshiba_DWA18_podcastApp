@@ -19,8 +19,17 @@
 
 .video{
     /* background-color: black; */
+    position: relative;
     height: 200vh;
     width: 100vw;
+}
+.video audio {
+  position: absolute; /* Position the audio element relative to the .video div */
+  top: 50%; /* Position it 50% from the top of the container */
+  left: 50%; /* Position it 50% from the left of the container */
+  transform: translate(-50%, -50%); /* Center the audio element within the .video div */
+  width: 100%; /* Make sure the audio element takes the full width of the container */
+  height: 100%;
 }
 
 .show_description {
@@ -53,3 +62,4 @@ p {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
