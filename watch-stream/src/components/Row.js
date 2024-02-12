@@ -27,7 +27,7 @@ function Row(props) {
           ? shows.map((show) => (
               <div className='show' key={show.id} onClick={() => handleClick(show)}>
                 <img className='row_poster' src={show.image} alt={show.title} />
-                <h6>{show.title}</h6>
+                <h4>{show.title}</h4>
                 <h6>{show.seasons} Seasons</h6>
                 <h6>Last updated: {new Date(show.updated).toLocaleDateString('en-US')}</h6>
               </div>
