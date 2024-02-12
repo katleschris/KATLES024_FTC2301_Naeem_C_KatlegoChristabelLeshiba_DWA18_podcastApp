@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Row.css';
 import axios from '../axios';
-import ShowContent from './ShowContent';
+import ShowContent from './showContent';
 
 function Row(props) {
   const [shows, setShows] = useState([]);

@@ -1,10 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import LoginScreen from './LoginScreen';
-import { supabase } from './Client';
-import SignupScreen from './SignupScreen';
 import './WelcomeScreen.css';
-import { Router, Route, Routes } from 'react-router-dom';
+import SearchResult from '../components/SearchResult';
 
 function WelcomeScreen(props) {
   const [signIn, setSignIn] = useState(false)
@@ -26,13 +24,7 @@ function WelcomeScreen(props) {
             <>
             <h1>Full content library in HD quality, with multiple subtitles.</h1>
             <h2>Free entertainment is the best type of entertainment where no money is needed</h2>
-            <div className="WelcomeScreen_input">
-              <form>
-                <input type='email' placeholder='Enter keywords' />
-                <button className='WelcomeScreen_search'>Search</button>
-              </form>
-              
-            </div>
+            <SearchResult shows ={props.shows}/>
             </>)}
           
             

@@ -3,8 +3,7 @@ import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import WelcomeScreen from './screens/WelcomeScreen';
-import LoginScreen from './screens/LoginScreen';
-import ShowContent from './components/ShowContent';
+import ShowContent from './components/showContent';
 
 function App() {
   const [user, setUser] = useState( null);
@@ -29,7 +28,7 @@ function App() {
       {/* <HomeScreen/> */}
       <Router>
         {!user ?  (
-          <WelcomeScreen setUser={setUser} />
+          <WelcomeScreen setUser={setUser} shows = {shows}/>
          ) : ( 
              <Routes>
                 <Route path="/" element={<HomeScreen shows = {shows}/>} />
