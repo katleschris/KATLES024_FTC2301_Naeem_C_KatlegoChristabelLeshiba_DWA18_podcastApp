@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Row from './Row'; // Import the Row component
 
 export default function SearchResult(props) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,7 @@ export default function SearchResult(props) {
   };
 
   return (
-    <div className="WelcomeScreen_input">
+    <div className="WelcomeScreen_input" style={{backgroundColor: 'black'}}>
       <form onSubmit={handleSearchSubmit}>
         <input
           type="text"
@@ -32,19 +33,12 @@ export default function SearchResult(props) {
         </button>
       </form>
       {showNotFound ? (
-        <p>No show or movie by that title was found.</p>
+        <p>No show by that title was found.</p>
       ) : (
-        <div>
-          {searchResults.map((show) => (
-            <div key={show.id}>
-              <h3>{show.title}</h3>
-              <p>{show.description}</p>
-              <img src={show.image} alt={show.title} />
-            </div>
-          ))}
-        </div>
+        <Row title="Search Results" shows={searchResults} /> 
       )}
     </div>
   );
 }
+
 
