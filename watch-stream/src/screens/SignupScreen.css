@@ -13,3 +13,8 @@
   .register:hover{
     text-decoration: underline;
   }
+
+  input:-internal-autofill-selected {
+    /* Keep other properties unchanged */
+    background-color: transparent /* Your new background color or 'transparent' to remove background color */ !important;
+}

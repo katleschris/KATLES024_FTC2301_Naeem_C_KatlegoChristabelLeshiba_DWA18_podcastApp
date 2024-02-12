@@ -9,6 +9,10 @@
   border-radius: 10px;
   color: #fff;
 }
+input:-internal-autofill-selected {
+  /* Keep other properties unchanged */
+  background-color: transparent/* Your new background color or 'transparent' to remove background color */ !important;
+}
 
 .mainContainer {
   display: flex;
@@ -41,7 +45,9 @@
   height: 20%;
   width: 100%;
 }
-
+a .sign-up {
+  color:#e8c7f1;
+}
 input {
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);

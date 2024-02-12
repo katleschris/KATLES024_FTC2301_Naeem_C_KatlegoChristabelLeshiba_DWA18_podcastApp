@@ -75,7 +75,7 @@ function LoginScreen(props) {
               <div className='icon' id='twitter'><FaTwitter /></div>
             </div>
           </form>
-          Don't have an account? <Link to='./SignupScreen' onClick={() => setShowSignup(true)}>Sign Up</Link>
+          Don't have an account? <Link to='./SignupScreen' onClick={() => setShowSignup(true)} style={{color: '#BF40BF'}}>Sign Up</Link>
         </div>
       )}
     </div>

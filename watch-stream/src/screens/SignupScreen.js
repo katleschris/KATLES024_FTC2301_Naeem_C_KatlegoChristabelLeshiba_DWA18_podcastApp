@@ -50,14 +50,15 @@ function SignupScreen() {
     return (
         <div className='SignupScreen'>
             <form onSubmit={handleSubmit}>
+                <label for='fullname'>fullname</label>
                 <input
                     style={{ color: 'white' }}
-                    placeholder='fullname'
+                    placeholder='Fullname'
                     name='fullname'
                     type='text'
                     onChange={handleChange}
                 />
-
+                <label for='email'>Email</label>
                 <input
                     style={{ color: 'white' }}
                     placeholder='email'
@@ -65,7 +66,7 @@ function SignupScreen() {
                     type='email'
                     onChange={handleChange}
                 />
-
+                <label for='password'>Password</label>
                 <input
                     style={{ color: 'white' }}
                     placeholder='password'
@@ -76,7 +77,7 @@ function SignupScreen() {
 
                 <button className='register' type='submit'>Register</button>    
             </form>
-            Already have an account? <Link to='#' onClick={() => setShowLoginScreen(true)}>Login</Link>
+            Already have an account? <Link to='#' onClick={() => setShowLoginScreen(true)}style={{color:'#BF40BF'}}>Login</Link>
         </div>
     );
 }
