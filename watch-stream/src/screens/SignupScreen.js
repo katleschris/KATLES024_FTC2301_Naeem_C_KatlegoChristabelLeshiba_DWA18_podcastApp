@@ -50,7 +50,7 @@ function SignupScreen() {
     return (
         <div className='SignupScreen'>
             <form onSubmit={handleSubmit}>
-                <label for='fullname'>fullname</label>
+                <label>fullname</label>
                 <input
                     style={{ color: 'white' }}
                     placeholder='Fullname'
@@ -58,7 +58,7 @@ function SignupScreen() {
                     type='text'
                     onChange={handleChange}
                 />
-                <label for='email'>Email</label>
+                <label>Email</label>
                 <input
                     style={{ color: 'white' }}
                     placeholder='email'
@@ -66,7 +66,7 @@ function SignupScreen() {
                     type='email'
                     onChange={handleChange}
                 />
-                <label for='password'>Password</label>
+                <label>Password</label>
                 <input
                     style={{ color: 'white' }}
                     placeholder='password'
